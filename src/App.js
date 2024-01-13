@@ -1,11 +1,10 @@
 import React from 'react';
+import Landing from './pages/landing';
 
 function App() {
   return (
-    <div>
-      <p>Initial</p>
-    </div>
-  );
+    <Landing />
+  )
 }
 
 export default App;
