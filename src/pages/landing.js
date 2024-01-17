@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import CustomModal from '../components/modal.js'
 import Dropdown from '../components/dropdown.js';
 import Input from '../components/input.js';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 function Landing() {
@@ -17,7 +18,6 @@ function Landing() {
 
     const updateSelection = (stateUpdate, event) => {
         stateUpdate(event);
-        console.log(event);
     }
 
     const cuisineSelections = ['American', 'Italian']
@@ -27,7 +27,9 @@ function Landing() {
         <div>
             <Navbar bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+                    <Link to="/">
+                        <Navbar.Brand>Navbar</Navbar.Brand>
+                    </Link>
                         <Nav className="ms-auto">
                             <Button onClick={() => setModalShow(true)}>Information</Button>
                             <CustomModal show={modalShow} onHide={() => setModalShow(false)}/>
@@ -59,7 +61,9 @@ function Landing() {
                                 onSelect={(value) => updateSelection(setSelectedLocation, value)}/>
                         </div>
                         <div className="col">
-                            <p className="form-control">SEARCH</p>
+                            <Link to="/logic">
+                                <Button className="form-control" onClick={() => setModalShow(true)}>SEARCH</Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
