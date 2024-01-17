@@ -16,8 +16,23 @@ function Landing() {
     const [selectedPrice, setSelectedPrice] = useState('');
     const [selectedLocation, setSelectedLocation] = useState('');
 
-    const updateSelection = (stateUpdate, event) => {
+    const initialQueryParams = {
+        selectedCuisine: '',
+        selectedPrice: '',
+        selectedLocation: ''
+    }
+
+    const [queryParams, setQueryParams] = useState(initialQueryParams);
+
+    let queryString = new URLSearchParams(queryParams).toString();
+
+    const updateSelection = (param, stateUpdate, event) => {
         stateUpdate(event);
+        setQueryParams((prevParams) => ({
+            ...prevParams,
+            [param]: event
+        }));
+        queryString = new URLSearchParams(queryParams).toString();
     }
 
     const cuisineSelections = ['American', 'Italian']
@@ -48,21 +63,21 @@ function Landing() {
                             <Dropdown 
                                 items={cuisineSelections} 
                                 selectionType={'Cuisine'} 
-                                onSelect={(value) => updateSelection(setSelectedCuisine, value)}/>
+                                onSelect={(value) => updateSelection('selectedCuisine', setSelectedCuisine, value)}/>
                         </div>
                         <div className="col">
                             <Dropdown 
                                 items={priceRanges} 
                                 selectionType={'Price Range'} 
-                                onSelect={(value) => updateSelection(setSelectedPrice, value)}/>
+                                onSelect={(value) => updateSelection('selectedPrice', setSelectedPrice, value)}/>
                         </div>
                         <div className="col">
                             <Input 
-                                onSelect={(value) => updateSelection(setSelectedLocation, value)}/>
+                                onSelect={(value) => updateSelection('selectedLocation', setSelectedLocation, value)}/>
                         </div>
                         <div className="col">
-                            <Link to="/logic">
-                                <Button className="form-control" onClick={() => setModalShow(true)}>SEARCH</Button>
+                            <Link to={`/logic${queryString ? `?${queryString}` : ''}`}>
+                                <Button className="form-control">SEARCH</Button>
                             </Link>
                         </div>
                     </div>
