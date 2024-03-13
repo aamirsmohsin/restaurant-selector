@@ -3,9 +3,9 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import CustomModal from '../components/modal.js'
-import Dropdown from '../components/dropdown.js';
-import Input from '../components/input.js';
+import CustomModal from '../Components/Modal.js'
+import Dropdown from '../Components/Dropdown.js';
+import Input from '../Components/Input.js';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -43,7 +43,7 @@ function Landing() {
             <Navbar bg="dark" data-bs-theme="dark">
                 <Container>
                     <Link to="/">
-                        <Navbar.Brand>Navbar</Navbar.Brand>
+                        <Navbar.Brand>Home</Navbar.Brand>
                     </Link>
                         <Nav className="ms-auto">
                             <Button onClick={() => setModalShow(true)}>Information</Button>

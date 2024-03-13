@@ -12,7 +12,7 @@ function Dropdown({ items, selectionType, onSelect }) {
     return (
         <div className="mb-3">
             <select value={selectedValue} className="form-select" onChange={handleChange}>
-                <option value="">Select a {selectionType}</option>
+                <option value="" disabled hidden>Select a {selectionType}</option>
                 
                 {items.map((item, index) => (
                     <option key={index} value={item}>{item}</option>

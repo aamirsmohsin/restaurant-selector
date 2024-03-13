@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 function Input( {onSelect} ) {
-    const [message, setMessage] = useState('Select a Location');
+    const [message, setMessage] = useState('');
 
     const handleChange = (event) => {
         setMessage(event.target.value);
@@ -13,6 +13,7 @@ function Input( {onSelect} ) {
         <div className="mb-3">
             <input 
                 type="text"
+                placeholder="Select an Address"
                 value={message}
                 onChange={handleChange}
                 className="form-control"/>
